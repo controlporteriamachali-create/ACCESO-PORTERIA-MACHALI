@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Control de Acceso y Aforo</title>
+  <!-- Librería para generar archivos Excel sin servidor -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f6f9; }
+    .card { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    button { background-color: #0066cc; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; }
+    button:hover { background-color: #004999; }
+    .btn-excel { background-color: #21a366; }
+    .btn-excel:hover { background-color: #177245; }
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+  </style>
+</head>
+<body>
+
+  <h1>Control de Ingreso y Aforo de Personal</h1>
+
+  <div class="card">
+    <h2>1. Transcripción IA de Registro Manual</h2>
+    <input type="file" id="inputFoto" accept="image/*">
+    <button onclick="procesarImagenIA()">Transcribir con IA</button>
+    <p id="estadoCarga" style="color: #666;"></p>
+  </div>
+
+  <div class="card">
+    <h2>2. Datos Transcritos / Personal Registrado</h2>
+    <button class="btn-excel" onclick="exportarAExcel()">Exportar Registros a Excel (.xlsx)</button>
+    <table id="tablaPersonal">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>RUT / DNI</th>
+          <th>Empresa</th>
+          <th>Rol / Categoría</th>
+        </tr>
+      </thead>
+      <tbody id="cuerpoTabla">
+        <!-- Los datos transcritos o ingresados se listarán aquí -->
+      </tbody>
+    </table>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
